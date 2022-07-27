@@ -68,10 +68,22 @@ class AuthService {
       UserInfo userinfo = await c.getUserInfo();
 
       User userdata = User(email: userinfo.name);
-
+      //getApi();
       return userdata;
     } catch (e) {
       throw 'Could not get userdata';
     }
+  }
+
+  getApi() async {
+    Credential c = await _auth.getAuthenticationCredential();
+
+    var token = await c.getTokenResponse();
+    var accessToken = token.accessToken;
+    var url = Uri.parse('http://192.168.8.100:3000/user');
+    var headers = {"Authorization": 'Bearer $accessToken'};
+    var response = await http.get(url, headers: headers);
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
   }
 }

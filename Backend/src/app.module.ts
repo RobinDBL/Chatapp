@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import {
   KeycloakConnectModule,
@@ -16,11 +15,11 @@ import { UserService } from './user/user.service';
       authServerUrl: 'http://localhost',
       realm: 'nestjs',
       clientId: 'nestjs-backend',
-      secret: 'BlXBY7A3oSFcWNKzmdbsuDqpiya5DIHG',
+      secret: 'p3y2Kl6kmqlXapo38DSXmFwbVYheWX1k',
       // Secret key of the client taken from keycloak server
     }),
   ],
-  controllers: [AppController, UserController],
+  controllers: [UserController],
   providers: [
     AppService,
     // This adds a global level authentication guard,

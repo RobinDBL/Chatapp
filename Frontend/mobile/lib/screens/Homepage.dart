@@ -39,7 +39,17 @@ class HomePage extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => AuthenticationWrapper()));
               },
-              icon: const Icon(Icons.logout))
+              icon: const Icon(Icons.logout)),
+
+              IconButton(
+              onPressed: () async {
+                await _authService.getApi();
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AuthenticationWrapper()));
+              },
+              icon: const Icon(Icons.api))
         ],
       ),
       body: ChatList(),

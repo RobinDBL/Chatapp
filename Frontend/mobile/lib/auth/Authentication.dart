@@ -22,7 +22,8 @@ class Authentication {
 
     // create the client
     var issuer = await Issuer.discover(uri);
-    var client = new Client(issuer, "postman");
+    var client = new Client(issuer, "flutter",
+        clientSecret: "cVtEzoE1SSnc9dOQTbKJOIVshSLjD4tT");
 
     // create a function to open a browser with an url
     urlLauncher(String url) async {
@@ -43,7 +44,7 @@ class Authentication {
 
     // create an authenticator
     var authenticator = new Authenticator(client,
-        port: 4000, urlLancher: urlLauncher, scopes: ["profile"]);
+        port: 4000, urlLancher: urlLauncher, scopes: ["email"]);
 
     // starts the authentication
     Credential c = await authenticator.authorize();
@@ -58,6 +59,9 @@ class Authentication {
     SecureAuthStorage()
         .secureStorage
         .write(key: "credentials", value: json.encode(c).toString());
+    SecureAuthStorage()
+        .secureStorage
+        .write(key: "BearerToken", value: token.accessToken)
 
     // return the user info
     return c;
