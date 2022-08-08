@@ -1,16 +1,18 @@
 # mobile
 
-A new Flutter project.
+This is the mobile application of the chatapp written in flutter. This proof of concept app
+shows the integration with an oidc provider, a websocket and a webapi. 
 
-## Getting Started
+## Installation
 
-This project is a starting point for a Flutter application.
+The installation for development purposes can be done with the flutter framework. To start the application, run the compand
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+Flutter run
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Authentication
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The app uses an oidc package to integrate the authentication with keycloak through the webview. 
+
+The authentication server (aka Keycloak) must be running
