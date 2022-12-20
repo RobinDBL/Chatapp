@@ -1,1 +1,9 @@
 <p>chat works!</p>
+<h1>messages:</h1>
+<ul>
+  <li *ngFor="let message of messages">{{message}}</li>
+</ul>
+
+<input [(ngModel)]="input">
+<button (click)="sendMessage()">sendMessage</button>
+<button (click)="logout()">logout</button>

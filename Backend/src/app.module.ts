@@ -9,13 +9,14 @@ import {
 import { APP_GUARD } from '@nestjs/core';
 import { UserController } from './user/user.controller';
 import { UserService } from './user/user.service';
+import { AppGateway } from './app.gateway';
 @Module({
   imports: [
     KeycloakConnectModule.register({
       authServerUrl: 'http://localhost',
       realm: 'nestjs',
       clientId: 'nestjs-backend',
-      secret: 'p3y2Kl6kmqlXapo38DSXmFwbVYheWX1k',
+      secret: 'VWCPNgLIpIkcpbrSkq6iQHATKiUEecZD',
       // Secret key of the client taken from keycloak server
     }),
   ],
@@ -33,7 +34,7 @@ import { UserService } from './user/user.service';
       useClass: AuthGuard,
     },
     // This adds a global level resource guard, which is permissive.
-    // Only controllers annotated with @Resource and 
+    // Only controllers annotated with @Resource and
     // methods with @Scopes
     // are handled by this guard.
     {
@@ -42,7 +43,7 @@ import { UserService } from './user/user.service';
     },
     // New in 1.1.0
     // This adds a global level role guard, which is permissive.
-    // Used by `@Roles` decorator with the 
+    // Used by `@Roles` decorator with the
     // optional `@AllowAnyRole` decorator for allowing any
     // specified role passed.
     {
@@ -50,6 +51,7 @@ import { UserService } from './user/user.service';
       useClass: RoleGuard,
     },
     UserService,
+    AppGateway,
   ],
 })
 export class AppModule {}
