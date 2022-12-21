@@ -1,7 +1,7 @@
 version: '2'
 services:
   postgresql:
-    image: docker.io/bitnami/postgresql:11
+    image: robindbl/keycloak_postgres
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
@@ -11,7 +11,7 @@ services:
       - 'postgresql_data:/bitnami/postgresql'
 
   keycloak:
-    image: docker.io/bitnami/keycloak:18
+    image: robindbl/keycloak
     depends_on:
       - postgresql
     ports:
