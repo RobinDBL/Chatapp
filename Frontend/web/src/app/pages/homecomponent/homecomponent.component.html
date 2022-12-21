@@ -1,2 +1,6 @@
 <p>homecomponent works!</p>
-<app-chat></app-chat>
+<div>
+<button *ngIf="(isAuthenticated | async)?.isAuthenticated" (click)="logout()">logout</button>
+<button *ngIf="!(isAuthenticated | async)?.isAuthenticated" (click)="login()">login</button>
+
+</div>

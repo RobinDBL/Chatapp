@@ -1,9 +1,15 @@
-<p>chat works!</p>
-<h1>messages:</h1>
+<div class="chatArea">
 <ul>
-  <li *ngFor="let message of messages">{{message}}</li>
-</ul>
+  <app-message-item *ngFor="let message of messages" [messageItem]="message" [userData]="userData"></app-message-item>
 
-<input [(ngModel)]="input">
-<button (click)="sendMessage()">sendMessage</button>
-<button (click)="logout()">logout</button>
+</ul>
+</div>
+
+<div class="chatInput m-2 p-3 w-100">
+  <form (submit)="sendMessage()">
+  <mat-form-field appearance="fill" class="w-100" >
+<input name="message" [(ngModel)]="input" matInput type="text" class="w-100">
+<button matSuffix [disabled]="input.length <= 0" type="submit" mat-icon-button color="primary"><mat-icon>send</mat-icon></button>
+  </mat-form-field>
+  </form>
+</div>
