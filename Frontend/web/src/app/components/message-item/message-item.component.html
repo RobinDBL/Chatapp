@@ -1,5 +1,5 @@
 
-<li *ngIf="messageItem.messageType === 0" [ngClass]="{'received': (userData | async)?.userData.sub !== messageItem.userId, 'sent': (userData | async)?.userData.sub === messageItem.userId}">
+<li *ngIf="messageItem.messageType === 0" [ngClass]="{'received mat-primary': (userData | async)?.userData.sub !== messageItem.userId, 'sent': (userData | async)?.userData.sub === messageItem.userId}">
   <mat-card color="primary">
     <mat-card-content>
       {{messageItem.message}}

@@ -7,9 +7,9 @@ import {ChatComponent} from "./pages/chat/chat.component";
 
 
 const routes: Routes = [
-  { path: "", component: HomecomponentComponent},
-  { path: "authentication", component: AuthenticationComponent, canActivate: [AutoLoginPartialRoutesGuard],},
-  { path: "chat", component: ChatComponent, canActivate: [AutoLoginPartialRoutesGuard],}
+  { path: "", redirectTo: 'chat', pathMatch: 'full' },
+  { path: "authentication", component: AuthenticationComponent,},
+  { path: "chat", component: ChatComponent, canActivate: [AutoLoginPartialRoutesGuard],},
 ];
 
 @NgModule({

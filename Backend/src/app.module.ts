@@ -16,7 +16,8 @@ import { AppController } from './app.controller';
       authServerUrl: 'http://localhost:8080',
       realm: 'chatapp',
       clientId: 'nestjs-backend',
-      secret: 'eKf6BcMVfZGVxM2wxEgjnP9cqvWy5xCz',
+      //secret: 'eKf6BcMVfZGVxM2wxEgjnP9cqvWy5xCz', // tlv
+      secret: 'HbwAPqzfF7gsZX2PlvwZk9x1anozrvYF' // home
       // Secret key of the client taken from keycloak server
     }),
   ],

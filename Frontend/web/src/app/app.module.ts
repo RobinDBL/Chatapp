@@ -23,6 +23,10 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import { MessageItemComponent } from './components/message-item/message-item.component';
 import {MatCardModule} from "@angular/material/card";
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
 
 const config: SocketIoConfig = {
   url: `${window.location.hostname}:3001`,
@@ -36,7 +40,8 @@ const config: SocketIoConfig = {
     HomecomponentComponent,
     AuthenticationComponent,
     ChatComponent,
-    MessageItemComponent
+    MessageItemComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,7 @@ const config: SocketIoConfig = {
     AuthConfigModule, BrowserAnimationsModule,
     MatSidenavModule,
     MatDividerModule,
-    SocketIoModule.forRoot(config), FormsModule, MatButtonModule, MatIconModule, MatInputModule, MatCardModule,
+    SocketIoModule.forRoot(config), FormsModule, MatButtonModule, MatIconModule, MatInputModule, MatCardModule, LayoutModule, MatToolbarModule, MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

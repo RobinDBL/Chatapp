@@ -7,7 +7,7 @@ imports: [
     AuthModule.forRoot({
         config: {
             authority: "http://localhost:8080/realms/chatapp/.well-known/openid-configuration",
-            redirectUrl: window.location.origin,
+            redirectUrl: window.location.origin + '/authentication',
             postLogoutRedirectUri: window.location.origin,
             clientId: "ChatAppFrontend",
             scope: "openid profile email",

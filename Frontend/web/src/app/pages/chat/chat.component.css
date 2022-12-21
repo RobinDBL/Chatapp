@@ -4,8 +4,8 @@ ul{
 }
 
 .chatArea{
-  height: 87vh;
-  overflow: scroll;
+  height: 80%;
+  overflow: auto;
   display: flex;
   flex-direction: column-reverse;
 }
