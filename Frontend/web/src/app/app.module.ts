@@ -14,26 +14,37 @@ import { AppComponent } from './app.component';
 import { AuthConfigModule } from './auth-config.module';
 import { HomecomponentComponent } from './pages/homecomponent/homecomponent.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {SocketIoConfig, SocketIoModule} from "ngx-socket-io";
+import {FormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
+import { MessageItemComponent } from './components/message-item/message-item.component';
+import {MatCardModule} from "@angular/material/card";
+
+const config: SocketIoConfig = {
+  url: `${window.location.hostname}:3001`,
+  options:{
+  }
+};
 
 @NgModule({
   declarations: [
     AppComponent,
     HomecomponentComponent,
     AuthenticationComponent,
-    FooterComponent,
-    SidebarComponent,
-    ChatComponent
+    ChatComponent,
+    MessageItemComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     AuthConfigModule, BrowserAnimationsModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    SocketIoModule.forRoot(config), FormsModule, MatButtonModule, MatIconModule, MatInputModule, MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

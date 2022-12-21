@@ -1,23 +1,31 @@
 import { NgModule } from '@angular/core';
-import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
+import {AuthInterceptor, AuthModule, LogLevel} from 'angular-auth-oidc-client';
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
 
 @NgModule({
-imports: [  
+imports: [
     AuthModule.forRoot({
         config: {
-            authority: "http://10.0.0.11:8080/realms/ChatApp/protocol/openid-connect/auth",
-            authWellknownEndpointUrl: "http://10.0.0.11:8080/realms/ChatApp/.well-known/openid-configuration",
-            redirectUrl: "http://10.0.0.11:4200/authentication",
-            postLogoutRedirectUri: "http://10.0.0.11:4200/",
+            authority: "http://localhost:8080/realms/chatapp/.well-known/openid-configuration",
+            redirectUrl: window.location.origin,
+            postLogoutRedirectUri: window.location.origin,
             clientId: "ChatAppFrontend",
             scope: "openid profile email",
-            logLevel: LogLevel.Debug,
             responseType: "code",
-            triggerAuthorizationResultEvent: true,
-            postLoginRoute: "/authentication"
+          silentRenew: true,
+          useRefreshToken: true,
+          ignoreNonceAfterRefresh: true,
+            secureRoutes: ['http://localhost:3000']
         }
     })
 ],
 exports: [AuthModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ]
 })
 export class AuthConfigModule{}

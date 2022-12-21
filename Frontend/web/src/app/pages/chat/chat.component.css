@@ -1,0 +1,16 @@
+ul{
+  padding: 0;
+  left: 0;
+}
+
+.chatArea{
+  height: 87vh;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.chatInput{
+  position: absolute;
+  bottom: 0;
+}

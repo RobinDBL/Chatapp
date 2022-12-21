@@ -1,1 +1,6 @@
 <p>homecomponent works!</p>
+<div>
+<button *ngIf="(isAuthenticated | async)?.isAuthenticated" (click)="logout()">logout</button>
+<button *ngIf="!(isAuthenticated | async)?.isAuthenticated" (click)="login()">login</button>
+
+</div>
