@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticatedResult, OidcSecurityService} from "angular-auth-oidc-client";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-homecomponent',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomecomponentComponent implements OnInit {
 
-  constructor() { }
+  isAuthenticated!: Observable<AuthenticatedResult>;
+  constructor(private _authService: OidcSecurityService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.isAuthenticated = await this._authService.isAuthenticated$;
+  }
+
+  logout(){
+    this._authService.logoffAndRevokeTokens().subscribe();
+  }
+
+  login(){
+    this._authService.authorize();
   }
 
 }

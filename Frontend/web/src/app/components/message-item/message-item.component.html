@@ -1,0 +1,13 @@
+
+<li *ngIf="messageItem.messageType === 0" [ngClass]="{'received': (userData | async)?.userData.sub !== messageItem.userId, 'sent': (userData | async)?.userData.sub === messageItem.userId}">
+  <mat-card color="primary">
+    <mat-card-content>
+      {{messageItem.message}}
+    </mat-card-content>
+  </mat-card>
+  <span *ngIf="(userData | async)?.userData.sub === messageItem.userId">you</span>
+  <span *ngIf="(userData | async)?.userData.sub !== messageItem.userId">{{messageItem.userName}}</span>
+</li>
+<li *ngIf="messageItem.messageType === 1" class="log">
+  {{messageItem.message}}
+</li>

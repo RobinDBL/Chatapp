@@ -1,0 +1,43 @@
+li{
+  list-style: none;
+  max-width: 40%;
+  width: fit-content;
+  margin-top: 25px;
+}
+
+.sent{
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+.received{
+  margin-right: auto;
+  margin-left: 5px;
+}
+
+.received span {
+  margin-left: 7px;
+}
+
+.sent span{
+  float: right;
+  margin-right: 7px;
+}
+
+.received mat-card{
+  background-color: #7B1FA2;
+}
+
+mat-card{
+  width: fit-content;
+}
+mat-card-content{
+  word-break: break-word;
+}
+
+.log{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: gray;
+}

@@ -1,26 +1,25 @@
 import { Module } from '@nestjs/common';
 import { AppService } from './app.service';
 import {
+  AuthGuard,
   KeycloakConnectModule,
   ResourceGuard,
   RoleGuard,
-  AuthGuard,
 } from 'nest-keycloak-connect';
 import { APP_GUARD } from '@nestjs/core';
-import { UserController } from './user/user.controller';
-import { UserService } from './user/user.service';
 import { AppGateway } from './app.gateway';
+import { AppController } from './app.controller';
+
 @Module({
   imports: [
     KeycloakConnectModule.register({
-      authServerUrl: 'http://localhost',
-      realm: 'nestjs',
+      authServerUrl: 'http://localhost:8080',
+      realm: 'chatapp',
       clientId: 'nestjs-backend',
-      secret: 'VWCPNgLIpIkcpbrSkq6iQHATKiUEecZD',
+      secret: 'eKf6BcMVfZGVxM2wxEgjnP9cqvWy5xCz',
       // Secret key of the client taken from keycloak server
     }),
   ],
-  controllers: [UserController],
   providers: [
     AppService,
     // This adds a global level authentication guard,
@@ -50,8 +49,8 @@ import { AppGateway } from './app.gateway';
       provide: APP_GUARD,
       useClass: RoleGuard,
     },
-    UserService,
     AppGateway,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
